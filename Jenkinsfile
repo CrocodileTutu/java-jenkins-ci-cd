@@ -1,15 +1,15 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven_3_6_3'
+    }
     stages {
         stage("Build")
         {
             steps
             {
-                script {
-                        echo "INFO: Build Stage"
-                        sh 'java -version'
-                        sh 'mvn -version'
-                    }
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/CrocodileTutu/java-jenkins-ci-cd']])
+                sh 'mvn clean install'
             }
         }
         stage("Test")
