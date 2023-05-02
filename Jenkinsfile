@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker { image 'openjdk:11.0-jdk' }
+        docker {
+            image 'openjdk:11.0-jdk'
+            args '-v $HOME/.m2:/root/.m2'
+        }
     }
     stages {
         stage("Build Maven")
