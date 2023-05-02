@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'openjdk:11.0-jdk' }
+    }
     stages {
         stage("Build Maven")
         {
@@ -16,24 +18,6 @@ pipeline {
                 script {
                     sh 'docker build -t CrocodileTutu/java-jenkins-ci-cd .'
                 }
-            }
-        }
-        stage("Test")
-        {
-            steps
-            {
-                script {
-                        echo "INFO: Test Stage"
-                    }
-            }
-        }
-        stage("Push")
-        {
-            steps
-            {
-                script {
-                            echo "INFO: Push Stage"
-                    }
             }
         }
     }
