@@ -6,5 +6,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/CrocodileTutu/java-jenkins-ci-cd.git'
             }
         }
+        stage('Build Maven') {
+            steps {
+                echo 'under construction'
+            }
+        }
     }
 }
